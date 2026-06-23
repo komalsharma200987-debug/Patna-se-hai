@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Patna Temple Image</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = 1920;
+        canvas.height = 1080;
+        
+        // Create sunset gradient background
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0, '#8B5A8E');      // Purple
+        gradient.addColorStop(0.25, '#B8405D');   // Pink-Purple
+        gradient.addColorStop(0.5, '#FF7B54');    // Orange
+        gradient.addColorStop(0.75, '#FFD166');   // Yellow-Orange
+        gradient.addColorStop(1, '#FFA500');      // Golden Orange
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Add clouds
+        ctx.fillStyle = 'rgba(255, 200, 100, 0.6)';
+        ctx.beginPath();
+        ctx.ellipse(300, 150, 150, 80, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.ellipse(800, 100, 200, 100, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.ellipse(1400, 200, 180, 90, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.fillStyle = 'rgba(255, 150, 80, 0.5)';
+        ctx.beginPath();
+        ctx.ellipse(450, 180, 140, 70, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.ellipse(1100, 150, 160, 80, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Draw water/river
+        ctx.fillStyle = 'rgba(100, 150, 200, 0.8)';
+        ctx.fillRect(0, 650, canvas.width, canvas.height - 650);
+        
+        // Add water reflection gradient
+        const waterGradient = ctx.createLinearGradient(0, 650, 0, canvas.height);
+        waterGradient.addColorStop(0, 'rgba(200, 100, 50, 0.4)');
+        waterGradient.addColorStop(1, 'rgba(100, 80, 200, 0.6)');
+        ctx.fillStyle = waterGradient;
+        ctx.fillRect(0, 650, canvas.width, canvas.height - 650);
+        
+        // Draw temples - Left temple (Red Hanuman Mandir)
+        // Main temple structure
+        ctx.fillStyle = '#C41E3A';
+        ctx.fillRect(100, 350, 300, 400);
+        
+        // Dome
+        ctx.fillStyle = '#D4A574';
+        ctx.beginPath();
+        ctx.ellipse(250, 330, 80, 100, 0, 0, Math.PI);
+        ctx.fill();
+        
+        // Spire on dome
+        ctx.fillStyle = '#FFD700';
+        ctx.fillRect(245, 200, 10, 140);
+        
+        // Temple details
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+        ctx.fillRect(130, 400, 240, 30);
+        ctx.fillRect(130, 480, 240, 30);
+        ctx.fillRect(130, 560, 240, 30);
+        
+        // Statue base
+        ctx.fillStyle = '#8B4513';
+        ctx.fillRect(150, 550, 200, 150);
+        
+        // Draw Center statue (Buddha)
+        ctx.fillStyle = '#D4AF37';
+        ctx.beginPath();
+        ctx.ellipse(960, 400, 60, 80, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Buddha body
+        ctx.fillRect(910, 480, 100, 120);
+        
+        // Buddha head
+        ctx.beginPath();
+        ctx.arc(960, 350, 50, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Right temple (White ISKCON temple)
+        ctx.fillStyle = '#F5F5F5';
+        ctx.fillRect(1450, 300, 350, 450);
+        
+        // Multiple domes
+        ctx.fillStyle = '#E8E8E8';
+        ctx.beginPath();
+        ctx.ellipse(1520, 270, 60, 80, 0, 0, Math.PI);
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.ellipse(1625, 250, 70, 90, 0, 0, Math.PI);
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.ellipse(1730, 270, 60, 80, 0, 0, Math.PI);
+        ctx.fill();
+        
+        // Spires
+        ctx.fillStyle = '#FFD700';
+        ctx.fillRect(1515, 150, 10, 130);
+        ctx.fillRect(1620, 130, 10, 150);
+        ctx.fillRect(1725, 150, 10, 130);
+        
+        // Temple details
+        ctx.fillStyle = 'rgba(200, 200, 200, 0.5)';
+        ctx.fillRect(1480, 380, 290, 25);
+        ctx.fillRect(1480, 450, 290, 25);
+        ctx.fillRect(1480, 520, 290, 25);
+        
+        // Add lights reflection on water
+        ctx.fillStyle = 'rgba(255, 200, 100, 0.4)';
+        for (let i = 0; i < 5; i++) {
+            ctx.fillRect(200 + i * 100, 650 + Math.random() * 30, 30, Math.random() * 100);
+        }
+        
+        ctx.fillStyle = 'rgba(200, 150, 80, 0.3)';
+        for (let i = 0; i < 5; i++) {
+            ctx.fillRect(1500 + i * 80, 650 + Math.random() * 40, 25, Math.random() * 120);
+        }
+        
+        // Add glow effect around sun
+        ctx.fillStyle = 'rgba(255, 200, 0, 0.2)';
+        ctx.beginPath();
+        ctx.arc(960, 200, 200, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.fillStyle = 'rgba(255, 150, 0, 0.15)';
+        ctx.beginPath();
+        ctx.arc(960, 200, 300, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Download the image
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/jpeg', 0.95);
+        link.download = 'patna-hero.jpg';
+        link.click();
+    </script>
+</body>
+</html>
